@@ -17,8 +17,10 @@ import javax.swing.ImageIcon;
 public class Memory extends JFrame {
 
 	private JPanel contentPane;
-	private ArrayList<JToggleButton> listaToggleButton = new ArrayList<JToggleButton>();
-	private ArrayList<Color> listaColores = new ArrayList<Color>();
+	private ArrayList<JToggleButton> listaToggleButton = new ArrayList<JToggleButton>();//contindra botons
+	private ArrayList<Color> listaColores = new ArrayList<Color>(); //contindra tots els tipos de colors diferents
+	private ArrayList<Color> listaColoresNoRepetidos = new ArrayList<Color>(); // control de colors repetits
+	
 
 	/**
 	 * Launch the application.
@@ -199,10 +201,11 @@ public class Memory extends JFrame {
 		listaToggleButton.add(tglbtn_15);
 		listaToggleButton.add(tglbtn_16);
 		
+		donarColorLLista();
 		// Recorrem la llista segons la seva mida per donar-li el valor d'un color aleatori
 		for (int i = 0; i < listaToggleButton.size(); i++) {
 			//listaToggleButton(i).setBackground(Color.black);
-			listaToggleButton.get(i).setBackground(colorAleatori());
+			//listaToggleButton.get(i).setBackground(colorAleatori());
 			// Perque es girin totes i no es mostri el color
 			listaToggleButton.get(i).setSelected(true);
 			
@@ -231,18 +234,49 @@ public class Memory extends JFrame {
 		listaColores.add(Color.pink);
 		listaColores.add(Color.yellow);
 		listaColores.add(Color.orange);
-		
-		
 	// Retorna un color aleatorio a través del numero aleatorio que hem creat anteriorment
 	return listaColores.get(crearNumAleatorio(0, 8));
 	
 	}
 	
+	private boolean esRepetit(Color colorAleatori) { 				//Metode per revisar si el color es repeteix + de dues vegades
+		int contador = 0; 											//Inicialitza un contador
+		for (int i = 0; i < listaColoresNoRepetidos.size(); i++) { // Recorrem la llista de colors no repetits segons la seva mida
+			if (listaColoresNoRepetidos.get(i) == colorAleatori) { // Si la posicio de la llista es igual al color aleatori pasat pel constructor, es suma
+				contador++;
+			}
+			if (contador >= 2) { 									// Si el contador es mes gran de 2 no es sumará
+				return true; 										// no dona valor al boto i busquem un altre cop
+			}
+			
+		}
+		return false;											// okey per donar valor al boto
 	
-	// Fer una llista on fico tots els colors, i cada vegada que s'introdueixi un color verifiqui si esta a la llista, que no es repeteixi mes de dues vegades
-	//private int noRepetit() {
-		//if 
+	}
+	
+	private void donarColorLLista() { 							//Reomplir els TuggleButtons amb el seu colors
 		
-	//}
+		for (int i = 0; i < listaToggleButton.size(); i++) { 	//Recorrem la llista de TougleButtons
+		boolean revisador = true;								// Creem un revisador amb el valor true
+																// Invoquem el metode Crear Aleatori, lhi donem la varieble 'color'
+		
+		while(revisador==true) {								// Mentres el revisador sigui true, entrará al While
+			Color color = colorAleatori();	
+			if(esRepetit(color) == false) {						// Si la condicio es repetit amb la variable color es false,	
+				listaToggleButton.get(i).setBackground(color);  // S'afegirá el valor al Touglebutton
+				listaColoresNoRepetidos.add(color);				// S'actualitza el valor a la llista
+				revisador=false;								// I el revisador pasará a false, per sortir de while
+					
+			}
+		}
+		
+		
+		
+		
+			
+		}
+		
+		
+	} 
 	
 }
