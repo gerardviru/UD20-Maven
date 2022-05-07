@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JToggleButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import java.awt.event.ActionEvent;
@@ -54,6 +55,7 @@ public class Memory extends JFrame {
 		tglbtn_1.setName("btn1");
 		tglbtn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			
 			}
 		});
@@ -63,6 +65,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_2 = new JToggleButton("");
 		tglbtn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 				
 			}
 		});
@@ -73,6 +76,7 @@ public class Memory extends JFrame {
 		
 		tglbtn_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_3.setBounds(307, 32, 121, 119);
@@ -81,6 +85,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_4 = new JToggleButton("");
 		tglbtn_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_4.setBounds(438, 32, 121, 119);
@@ -89,6 +94,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_5 = new JToggleButton("");
 		tglbtn_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_5.setBounds(44, 162, 121, 119);
@@ -97,6 +103,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_6 = new JToggleButton("");
 		tglbtn_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_6.setBounds(175, 162, 121, 119);
@@ -105,6 +112,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_7 = new JToggleButton("");
 		tglbtn_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_7.setBounds(307, 162, 121, 119);
@@ -113,6 +121,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_8 = new JToggleButton("");
 		tglbtn_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_8.setBounds(438, 162, 121, 119);
@@ -121,6 +130,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_9 = new JToggleButton("");
 		tglbtn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_9.setBounds(44, 292, 121, 119);
@@ -129,6 +139,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_10 = new JToggleButton("");
 		tglbtn_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_10.setBounds(175, 292, 121, 119);
@@ -137,6 +148,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_11 = new JToggleButton("");
 		tglbtn_11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_11.setBounds(307, 292, 121, 119);
@@ -145,6 +157,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_12 = new JToggleButton("");
 		tglbtn_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_12.setBounds(438, 292, 121, 119);
@@ -153,6 +166,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_13 = new JToggleButton("");
 		tglbtn_13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_13.setBounds(44, 418, 121, 119);
@@ -161,6 +175,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_14 = new JToggleButton("");
 		tglbtn_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_14.setBounds(175, 418, 121, 119);
@@ -169,6 +184,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_15 = new JToggleButton("");
 		tglbtn_15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_15.setBounds(307, 418, 121, 119);
@@ -177,6 +193,7 @@ public class Memory extends JFrame {
 		JToggleButton tglbtn_16 = new JToggleButton("");
 		tglbtn_16.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				maximDos();
 			}
 		});
 		tglbtn_16.setBounds(438, 418, 121, 119);
@@ -208,11 +225,16 @@ public class Memory extends JFrame {
 			//listaToggleButton.get(i).setBackground(colorAleatori());
 			// Perque es girin totes i no es mostri el color
 			listaToggleButton.get(i).setSelected(true);
+		
+		
 			
 		}
 		
-
-	}
+		
+			
+		}
+	//	System.out.println(listaToggleButton.get(0).isSelected());
+	
 	
 	// Metode on lhi pasem el minim i el maxim perque ens creeí un numero aleatori
 	private int crearNumAleatorio(int min, int max) {
@@ -270,13 +292,31 @@ public class Memory extends JFrame {
 			}
 		}
 		
+	}
+	}
+	private void maximDos() {
+		int pulsado = 0;
+		for (int i = 0; i < listaToggleButton.size(); i++) {
 		
-		
-		
-			
+				if(listaToggleButton.get(i).isSelected()== false) {
+					pulsado++;
+				}
+		}if(pulsado >= 3) {
+			girarCartas();
 		}
+			
+	}
 		
+	private void girarCartas() {
 		
-	} 
+		for (int j = 0; j < listaToggleButton.size(); j++) {
+			listaToggleButton.get(j).setSelected(true);
+		}
 	
-}
+	}
+		
+	
+		
+} 
+	
+
