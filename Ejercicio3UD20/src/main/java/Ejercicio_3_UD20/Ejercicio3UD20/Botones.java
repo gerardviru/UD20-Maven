@@ -87,5 +87,7 @@ public class Botones extends JFrame {
 		
 		
 		
+		
+		
 	}
 }
