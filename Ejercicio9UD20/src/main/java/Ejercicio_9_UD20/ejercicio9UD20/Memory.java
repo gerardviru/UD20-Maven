@@ -48,245 +48,265 @@ public class Memory extends JFrame {
 	 * Create the frame.
 	 */
 	public Memory() {
+		
+		Controlador controlador = new Controlador();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 632, 611);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		tglbtn_1 = new JToggleButton("");
-		// tglbtn_1.setSelectedIcon(new
-		// ImageIcon(Memory.class.getResource("../com/sun/java/swing/plaf/windows/icons/Error.gif")));
-		tglbtn_1.setName("btn1");
-		tglbtn_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (tglbtn_1.isSelected()) {
-					btn1 = true;
-					pulsats--;
-				} else {
-					btn1 = false;
-					pulsats++;
-				}
-				System.out.println(btn1);
-				maximDos();
+		
+		// Posicion casillas x
+		int x = 0;
+		// Posicion casillas y
+		int y = 0;
+		for (int i = 0; i < 16; i++) {
+			Carta carta = new Carta();
+			if (i > 0 && i%4 == 0) {
+				x = 0;
+				y = y + 120 + 10;
 			}
-		});
-
-		tglbtn_1.setBounds(44, 32, 121, 119);
-		contentPane.add(tglbtn_1);
-
-		tglbtn_2 = new JToggleButton("");
-		tglbtn_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_2.isSelected()) {
-					btn2 = true;
-				} else {
-					btn2 = false;
-				}
+			carta.setBounds(120 * x + 40 + (10 * x), y + 30, 120, 120);
+			contentPane.add(carta);
 			
-			}
-		});
-		tglbtn_2.setBounds(176, 32, 121, 119);
-		contentPane.add(tglbtn_2);
+			x++;
+			
+			// Añadir carta al arryList
+			controlador.anadirCarta(carta);
 
-		tglbtn_3 = new JToggleButton("");
+		}
+		
+//		tglbtn_1 = new JToggleButton("");
+//		tglbtn_1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				if (tglbtn_1.isSelected()) {
+//					btn1 = true;
+//					pulsats--;
+//				} else {
+//					btn1 = false;
+//					pulsats++;
+//				}
+//				System.out.println(btn1);
+//				maximDos();
+//			}
+//		});
+//
+//		tglbtn_1.setBounds(74, 32, 121, 119);
+//		contentPane.add(tglbtn_1);
+//
+//		tglbtn_2 = new JToggleButton("");
+//		tglbtn_2.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_2.isSelected()) {
+//					btn2 = true;
+//				} else {
+//					btn2 = false;
+//				}
+//			
+//			}
+//		});
+//		tglbtn_2.setBounds(176, 32, 121, 119);
+//		contentPane.add(tglbtn_2);
 
-		tglbtn_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_3.isSelected()) {
-					btn3 = true;
-				} else {
-					btn3 = false;
-				}
-			}
-		});
-		tglbtn_3.setBounds(307, 32, 121, 119);
-		contentPane.add(tglbtn_3);
+//		tglbtn_3 = new JToggleButton("");
+//
+//		tglbtn_3.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_3.isSelected()) {
+//					btn3 = true;
+//				} else {
+//					btn3 = false;
+//				}
+//			}
+//		});
+//		tglbtn_3.setBounds(307, 32, 121, 119);
+//		contentPane.add(tglbtn_3);
+//
+//		tglbtn_4 = new JToggleButton("");
+//		tglbtn_4.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_4.isSelected()) {
+//					btn4 = true;
+//				} else {
+//					btn4 = false;
+//				}
+//			}
+//		});
+//		tglbtn_4.setBounds(438, 32, 121, 119);
+//		contentPane.add(tglbtn_4);
 
-		tglbtn_4 = new JToggleButton("");
-		tglbtn_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_4.isSelected()) {
-					btn4 = true;
-				} else {
-					btn4 = false;
-				}
-			}
-		});
-		tglbtn_4.setBounds(438, 32, 121, 119);
-		contentPane.add(tglbtn_4);
+//		tglbtn_5 = new JToggleButton("");
+//		tglbtn_5.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_5.isSelected()) {
+//					btn5 = true;
+//				} else {
+//					btn5 = false;
+//				}
+//			}
+//		});
+//		tglbtn_5.setBounds(44, 162, 121, 119);
+//		contentPane.add(tglbtn_5);
+//
+//		tglbtn_6 = new JToggleButton("");
+//		tglbtn_6.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();	if (tglbtn_6.isSelected()) {
+//					btn6 = true;
+//				} else {
+//					btn6 = false;
+//				}
+//				
+//			}
+//		});
+//		tglbtn_6.setBounds(175, 162, 121, 119);
+//		contentPane.add(tglbtn_6);
+//
+//		tglbtn_7 = new JToggleButton("");
+//		tglbtn_7.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_7.isSelected()) {
+//					btn7 = true;
+//				} else {
+//					btn7 = false;
+//				}
+//			}
+//		});
+//		tglbtn_7.setBounds(307, 162, 121, 119);
+//		contentPane.add(tglbtn_7);
+//
+//		tglbtn_8 = new JToggleButton("");
+//		tglbtn_8.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_8.isSelected()) {
+//					btn8 = true;
+//				} else {
+//					btn8 = false;
+//				}
+//			}
+//		});
+//		tglbtn_8.setBounds(438, 162, 121, 119);
+//		contentPane.add(tglbtn_8);
+//
+//		tglbtn_9 = new JToggleButton("");
+//		tglbtn_9.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_9.isSelected()) {
+//					btn9 = true;
+//				} else {
+//					btn9 = false;
+//				}
+//			}
+//		});
+//		tglbtn_9.setBounds(44, 292, 121, 119);
+//		contentPane.add(tglbtn_9);
+//
+//		tglbtn_10 = new JToggleButton("");
+//		tglbtn_10.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_10.isSelected()) {
+//					btn10 = true;
+//				} else {
+//					btn10 = false;
+//				}
+//			}
+//		});
+//		tglbtn_10.setBounds(175, 292, 121, 119);
+//		contentPane.add(tglbtn_10);
 
-		tglbtn_5 = new JToggleButton("");
-		tglbtn_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_5.isSelected()) {
-					btn5 = true;
-				} else {
-					btn5 = false;
-				}
-			}
-		});
-		tglbtn_5.setBounds(44, 162, 121, 119);
-		contentPane.add(tglbtn_5);
-
-		tglbtn_6 = new JToggleButton("");
-		tglbtn_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();	if (tglbtn_6.isSelected()) {
-					btn6 = true;
-				} else {
-					btn6 = false;
-				}
-				
-			}
-		});
-		tglbtn_6.setBounds(175, 162, 121, 119);
-		contentPane.add(tglbtn_6);
-
-		tglbtn_7 = new JToggleButton("");
-		tglbtn_7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_7.isSelected()) {
-					btn7 = true;
-				} else {
-					btn7 = false;
-				}
-			}
-		});
-		tglbtn_7.setBounds(307, 162, 121, 119);
-		contentPane.add(tglbtn_7);
-
-		tglbtn_8 = new JToggleButton("");
-		tglbtn_8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_8.isSelected()) {
-					btn8 = true;
-				} else {
-					btn8 = false;
-				}
-			}
-		});
-		tglbtn_8.setBounds(438, 162, 121, 119);
-		contentPane.add(tglbtn_8);
-
-		tglbtn_9 = new JToggleButton("");
-		tglbtn_9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_9.isSelected()) {
-					btn9 = true;
-				} else {
-					btn9 = false;
-				}
-			}
-		});
-		tglbtn_9.setBounds(44, 292, 121, 119);
-		contentPane.add(tglbtn_9);
-
-		tglbtn_10 = new JToggleButton("");
-		tglbtn_10.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_10.isSelected()) {
-					btn10 = true;
-				} else {
-					btn10 = false;
-				}
-			}
-		});
-		tglbtn_10.setBounds(175, 292, 121, 119);
-		contentPane.add(tglbtn_10);
-
-		tglbtn_11 = new JToggleButton("");
-		tglbtn_11.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_11.isSelected()) {
-					btn11 = true;
-				} else {
-					btn11 = false;
-				}
-			}
-		});
-		tglbtn_11.setBounds(307, 292, 121, 119);
-		contentPane.add(tglbtn_11);
-
-		tglbtn_12 = new JToggleButton("");
-		tglbtn_12.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_12.isSelected()) {
-					btn12 = true;
-				} else {
-					btn12 = false;
-				}
-			}
-		});
-		tglbtn_12.setBounds(438, 292, 121, 119);
-		contentPane.add(tglbtn_12);
-
-		tglbtn_13 = new JToggleButton("");
-		tglbtn_13.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_13.isSelected()) {
-					btn13 = true;
-				} else {
-					btn13 = false;
-				}
-			}
-		});
-		tglbtn_13.setBounds(44, 418, 121, 119);
-		contentPane.add(tglbtn_13);
-
-		tglbtn_14 = new JToggleButton("");
-		tglbtn_14.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_14.isSelected()) {
-					btn14 = true;
-				} else {
-					btn14 = false;
-				}
-			}
-		});
-		tglbtn_14.setBounds(175, 418, 121, 119);
-		contentPane.add(tglbtn_14);
-
-		tglbtn_15 = new JToggleButton("");
-		tglbtn_15.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_15.isSelected()) {
-					btn15 = true;
-				} else {
-					btn15 = false;
-				}
-			}
-		});
-		tglbtn_15.setBounds(307, 418, 121, 119);
-		contentPane.add(tglbtn_15);
-
-		tglbtn_16 = new JToggleButton("");
-		tglbtn_16.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				maximDos();
-				if (tglbtn_16.isSelected()) {
-					btn16 = true;
-				} else {
-					btn16 = false;
-				}
-			}
-		});
-		tglbtn_16.setBounds(438, 418, 121, 119);
-		contentPane.add(tglbtn_16);
+//		tglbtn_11 = new JToggleButton("");
+//		tglbtn_11.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_11.isSelected()) {
+//					btn11 = true;
+//				} else {
+//					btn11 = false;
+//				}
+//			}
+//		});
+//		tglbtn_11.setBounds(307, 292, 121, 119);
+//		contentPane.add(tglbtn_11);
+//
+//		tglbtn_12 = new JToggleButton("");
+//		tglbtn_12.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_12.isSelected()) {
+//					btn12 = true;
+//				} else {
+//					btn12 = false;
+//				}
+//			}
+//		});
+//		tglbtn_12.setBounds(438, 292, 121, 119);
+//		contentPane.add(tglbtn_12);
+//
+//		tglbtn_13 = new JToggleButton("");
+//		tglbtn_13.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_13.isSelected()) {
+//					btn13 = true;
+//				} else {
+//					btn13 = false;
+//				}
+//			}
+//		});
+//		tglbtn_13.setBounds(44, 418, 121, 119);
+//		contentPane.add(tglbtn_13);
+//
+//		tglbtn_14 = new JToggleButton("");
+//		tglbtn_14.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_14.isSelected()) {
+//					btn14 = true;
+//				} else {
+//					btn14 = false;
+//				}
+//			}
+//		});
+//		tglbtn_14.setBounds(175, 418, 121, 119);
+//		contentPane.add(tglbtn_14);
+//
+//		tglbtn_15 = new JToggleButton("");
+//		tglbtn_15.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_15.isSelected()) {
+//					btn15 = true;
+//				} else {
+//					btn15 = false;
+//				}
+//			}
+//		});
+//		tglbtn_15.setBounds(307, 418, 121, 119);
+//		contentPane.add(tglbtn_15);
+//
+//		tglbtn_16 = new JToggleButton("");
+//		tglbtn_16.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				maximDos();
+//				if (tglbtn_16.isSelected()) {
+//					btn16 = true;
+//				} else {
+//					btn16 = false;
+//				}
+//			}
+//		});
+//		tglbtn_16.setBounds(438, 418, 121, 119);
+//		contentPane.add(tglbtn_16);
 
 		// Los añadimos al arrayList
 		listaToggleButton.add(tglbtn_1);
@@ -306,22 +326,22 @@ public class Memory extends JFrame {
 		listaToggleButton.add(tglbtn_15);
 		listaToggleButton.add(tglbtn_16);
 
-		donarColorLLista();
+//		donarColorLLista();
 		// Recorrem la llista segons la seva mida per donar-li el valor d'un color
 		// aleatori
-		for (int i = 0; i < listaToggleButton.size(); i++) {
-			// listaToggleButton(i).setBackground(Color.black);
-			// listaToggleButton.get(i).setBackground(colorAleatori());
-			// Perque es girin totes i no es mostri el color
-			listaToggleButton.get(i).setSelected(true);
-
-		}
+//		for (int i = 0; i < listaToggleButton.size(); i++) {
+//			// listaToggleButton(i).setBackground(Color.black);
+//			// listaToggleButton.get(i).setBackground(colorAleatori());
+//			// Perque es girin totes i no es mostri el color
+//			listaToggleButton.get(i).setSelected(true);
+//
+//		}
 
 	}
 	// System.out.println(listaToggleButton.get(0).isSelected());
 
 	// Metode on lhi pasem el minim i el maxim perque ens creeí un numero aleatori
-	private int crearNumAleatorio(int min, int max) {
+	public int crearNumAleatorio(int min, int max) {
 		Random random = new Random();
 
 		int numero = random.nextInt(max + min) + min;
@@ -330,7 +350,7 @@ public class Memory extends JFrame {
 		return numero;
 	}
 
-	private Color colorAleatori() {
+	public Color colorAleatori() {
 
 		listaColores.add(Color.black);
 		listaColores.add(Color.red);
@@ -346,7 +366,7 @@ public class Memory extends JFrame {
 
 	}
 
-	private boolean esRepetit(Color colorAleatori) { 				// Metode per revisar si el color es repeteix + de dues vegades
+	public boolean esRepetit(Color colorAleatori) { 				// Metode per revisar si el color es repeteix + de dues vegades
 		int contador = 0; 											// Inicialitza un contador
 		for (int i = 0; i < listaColoresNoRepetidos.size(); i++) {	// Recorrem la llista de colors no repetits segons la
 																	// seva mida
@@ -363,26 +383,26 @@ public class Memory extends JFrame {
 
 	}
 
-	private void donarColorLLista() { 								// Reomplir els TuggleButtons amb el seu colors
+//	public void donarColorLLista() { 								// Reomplir els TuggleButtons amb el seu colors
+//
+//		for (int i = 0; i < listaToggleButton.size(); i++) { 		// Recorrem la llista de TougleButtons
+//			boolean revisador = true; 								// Creem un revisador amb el valor true
+//																	// Invoquem el metode Crear Aleatori, lhi donem la varieble 'color'
+//
+//			while (revisador == true) { 							// Mentres el revisador sigui true, entrará al While
+//				Color color = colorAleatori();
+//				if (esRepetit(color) == false) { 					// Si la condicio es repetit amb la variable color es false,
+//					listaToggleButton.get(i).setBackground(color); 	// S'afegirá el valor al Touglebutton
+//					listaColoresNoRepetidos.add(color); 			// S'actualitza el valor a la llista
+//					revisador = false; 								//I el revisador pasará a false, per sortir de while
+//
+//				}
+//			}
+//
+//		}
+//	}
 
-		for (int i = 0; i < listaToggleButton.size(); i++) { 		// Recorrem la llista de TougleButtons
-			boolean revisador = true; 								// Creem un revisador amb el valor true
-																	// Invoquem el metode Crear Aleatori, lhi donem la varieble 'color'
-
-			while (revisador == true) { 							// Mentres el revisador sigui true, entrará al While
-				Color color = colorAleatori();
-				if (esRepetit(color) == false) { 					// Si la condicio es repetit amb la variable color es false,
-					listaToggleButton.get(i).setBackground(color); 	// S'afegirá el valor al Touglebutton
-					listaColoresNoRepetidos.add(color); 			// S'actualitza el valor a la llista
-					revisador = false; 								//I el revisador pasará a false, per sortir de while
-
-				}
-			}
-
-		}
-	}
-
-	private void igualDesapareix() {
+	public void igualDesapareix() {
 		Color colorCarta;
 		for (int i = 0; i < listaToggleButton.size(); i++) {
 			colorCarta = listaToggleButton.get(i).getBackground();
@@ -391,7 +411,7 @@ public class Memory extends JFrame {
 		}
 	}
 
-	private void maximDos() {
+	public void maximDos() {
 		int pulsado = 0;
 		for (int i = 0; i < listaToggleButton.size(); i++) {
 			if (listaToggleButton.get(i).isSelected() == false) {
@@ -406,7 +426,7 @@ public class Memory extends JFrame {
 
 	}
 
-	private void girarCartas() {
+	public void girarCartas() {
 
 		for (int j = 0; j < listaToggleButton.size(); j++) {
 			listaToggleButton.get(j).setSelected(true);
