@@ -18,7 +18,8 @@ public class appGrafica extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_2;
-	
+	private double TASA_CONVERSION = 16638.6;
+	private double TASA_CONVERSION_2 = 0.6;
 
 
 	/**
@@ -69,9 +70,9 @@ public class appGrafica extends JFrame {
 				double resultado = 0.0;
 				// Si el boton es igual a euros pesetas se ejecuta el if, si no tirará por el else
 				if (btnNewButton.getText().equals("Euros a Pesetas")) {
-					resultado = Math.round((Double.parseDouble(textField.getText())*16638.6)/100);
+					resultado = Math.round((Double.parseDouble(textField.getText())*TASA_CONVERSION)/100);
 				} else {
-					resultado = Math.round((Double.parseDouble(textField.getText())*0.6)/100);
+					resultado = Math.round((Double.parseDouble(textField.getText())*TASA_CONVERSION_2)/100);
 				}
 				textField_2.setText(""+resultado+"");
 			}
