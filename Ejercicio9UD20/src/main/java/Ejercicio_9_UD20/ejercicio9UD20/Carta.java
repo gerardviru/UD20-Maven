@@ -9,16 +9,18 @@ import javax.swing.JToggleButton;
 public class Carta extends JToggleButton {
 
 	/*
-	 *  Attributes
+	 * Attributes
 	 */
 	private boolean girada = false;
 	// Color asignado
 	private Color color;
-	
+	public Controlador controlador;
+
 	/*
 	 * Contructor
 	 */
-	public Carta() {
+	public Carta(Controlador controlador) {
+		this.controlador = controlador;
 		this.setBackground(Color.BLACK);
 		// Dar apariencia de girada. Al girar se verá el color de background
 		this.setSelected(true);
@@ -26,13 +28,16 @@ public class Carta extends JToggleButton {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				girarCarta();
-			}
 
+				if (girada) {
+					girarCarta();
+					controlador.sumarCartaGirada((Carta)e.getSource());
+					controlador.comprobarGiradas();		
+				}
+			}
 
 		});
 	}
-
 
 	/**
 	 * @return the girada
@@ -41,18 +46,17 @@ public class Carta extends JToggleButton {
 		return girada;
 	}
 
-
 	/**
 	 * @param girada the girada to set
 	 */
 	public void setGirada(boolean girada) {
 		this.girada = girada;
 	}
-	
+
 	// Methods
-	
+
 	// Toggle estado girada
 	private void girarCarta() {
-		this.girada = !this.girada;
+		setGirada(!girada);
 	}
 }

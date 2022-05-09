@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
 
 public class Memory2 extends JFrame {
 
@@ -23,7 +24,7 @@ public class Memory2 extends JFrame {
 	private ArrayList<Color> listaColoresNoRepetidos = new ArrayList<Color>(); // control de colors repetits
 	private boolean btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15,
 			btn16;
-	private JToggleButton tglbtn_1, tglbtn_2, tglbtn_3, tglbtn_4, tglbtn_5, tglbtn_6, tglbtn_7, tglbtn_8, tglbtn_9,
+	private JToggleButton tglbtn_2, tglbtn_3, tglbtn_4, tglbtn_5, tglbtn_6, tglbtn_7, tglbtn_8, tglbtn_9,
 			tglbtn_10, tglbtn_11, tglbtn_12, tglbtn_13, tglbtn_14, tglbtn_15, tglbtn_16;
 	private int pulsats= 0;
 	
@@ -54,27 +55,6 @@ public class Memory2 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		tglbtn_1 = new JToggleButton("");
-		// tglbtn_1.setSelectedIcon(new
-		// ImageIcon(Memory.class.getResource("../com/sun/java/swing/plaf/windows/icons/Error.gif")));
-		tglbtn_1.setName("btn1");
-		tglbtn_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (tglbtn_1.isSelected()) {
-					btn1 = true;
-					pulsats--;
-				} else {
-					btn1 = false;
-					pulsats++;
-				}
-				System.out.println(btn1);
-				maximDos();
-			}
-		});
-
-		tglbtn_1.setBounds(44, 32, 121, 119);
-		contentPane.add(tglbtn_1);
 
 		tglbtn_2 = new JToggleButton("");
 		tglbtn_2.addActionListener(new ActionListener() {
@@ -287,9 +267,6 @@ public class Memory2 extends JFrame {
 		});
 		tglbtn_16.setBounds(438, 418, 121, 119);
 		contentPane.add(tglbtn_16);
-
-		// Los añadimos al arrayList
-		listaToggleButton.add(tglbtn_1);
 		listaToggleButton.add(tglbtn_2);
 		listaToggleButton.add(tglbtn_3);
 		listaToggleButton.add(tglbtn_4);
@@ -305,6 +282,11 @@ public class Memory2 extends JFrame {
 		listaToggleButton.add(tglbtn_14);
 		listaToggleButton.add(tglbtn_15);
 		listaToggleButton.add(tglbtn_16);
+		
+		JEditorPane editorPane = new JEditorPane();
+		editorPane.setBackground(Color.LIGHT_GRAY);
+		editorPane.setBounds(44, 32, 122, 119);
+		contentPane.add(editorPane);
 
 		donarColorLLista();
 		// Recorrem la llista segons la seva mida per donar-li el valor d'un color
@@ -413,6 +395,4 @@ public class Memory2 extends JFrame {
 		}
 
 	}
-
-
 }

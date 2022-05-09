@@ -16,14 +16,14 @@ public class Controlador {
 	// Las cartas giradas cara arriba
 	private ArrayList<Carta> cartasGiradas = new ArrayList<Carta>();
 	// Los colores disponibles
-	private ArrayList<Color> colores = new ArrayList<Color>();
+	private ArrayList<ColorCarta> colores = new ArrayList<ColorCarta>();
 
-	
 	/*
 	 * Constructor
 	 */
 	public Controlador() {
-		listaColores();
+		crearColoresCartas();
+		crearCartas();
 	}
 
 	// Getters Setters
@@ -45,17 +45,31 @@ public class Controlador {
 	// Methods
 
 	/**
-	 * Dar la vuelta a las cartas para taparlas
+	 * @return the totalGiradas
 	 */
-	public void taparCartas() {
-
+	public int getTotalGiradas() {
+		return totalGiradas;
 	}
 
 	/**
-	 * Añadir carta al ArrayList
+	 * @param totalGiradas the totalGiradas to set
 	 */
-	public void anadirCarta(Carta carta) {
-		this.cartas.add(carta);
+	public void setTotalGiradas(int totalGiradas) {
+		this.totalGiradas = totalGiradas;
+	}
+
+	/**
+	 * @return the cartasGiradas
+	 */
+	public ArrayList<Carta> getCartasGiradas() {
+		return cartasGiradas;
+	}
+
+	/**
+	 * @param cartasGiradas the cartasGiradas to set
+	 */
+	public void setCartasGiradas(ArrayList<Carta> cartasGiradas) {
+		this.cartasGiradas = cartasGiradas;
 	}
 
 	/**
@@ -65,7 +79,7 @@ public class Controlador {
 	 * @param max
 	 * @return
 	 */
-	public int crearNumAleatorio(int min, int max) {
+	private int crearNumAleatorio(int min, int max) {
 		Random random = new Random();
 
 		int numero = random.nextInt(max + min) + min;
@@ -74,80 +88,121 @@ public class Controlador {
 	}
 
 	/**
+	 * Crear y guardar los colores de las cartas
 	 * 
+	 * @return
 	 */
-	// Reomplir els TuggleButtons amb el seu colors
-	public void donarColorLLista() {
+	private void crearColoresCartas() {
 
-		// Recorrem la llista de TougleButtons
-		for (int i = 0; i < cartas.size(); i++) {
-			// Creem un revisador amb el valor true
-			boolean revisador = true;
-			// Invoquem el metode Crear Aleatori, lhi donem la varieble 'color'
+		ColorCarta colorCarta = new ColorCarta(Color.black);
+		this.colores.add(colorCarta);
 
-			// Mentres el revisador sigui true, entrará al While
-			while (revisador == true) {
-				Color color = colorAleatori();
-				// Si la condicio es repetit amb la variable color es false,
-				if (esRepetit(color) == false) {
-					// S'afegirá el valor al Touglebutton
-					cartas.get(i).setBackground(color);
-					// S'actualitza el valor a la llista
-					listaColoresNoRepetidos.add(color);
-					// I el revisador pasará a false, per sortir de while
-					revisador = false;
+		colorCarta = new ColorCarta(Color.red);
+		this.colores.add(colorCarta);
 
-				}
+		colorCarta = new ColorCarta(Color.blue);
+		this.colores.add(colorCarta);
+
+		colorCarta = new ColorCarta(Color.green);
+		this.colores.add(colorCarta);
+
+		colorCarta = new ColorCarta(Color.magenta);
+		this.colores.add(colorCarta);
+
+		colorCarta = new ColorCarta(Color.pink);
+		this.colores.add(colorCarta);
+
+		colorCarta = new ColorCarta(Color.yellow);
+		this.colores.add(colorCarta);
+
+		colorCarta = new ColorCarta(Color.orange);
+		this.colores.add(colorCarta);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private void darColor(Carta carta) {
+
+		// Condiciones salida del while
+		boolean asignado = false;
+		int loop = 0;
+		int maxLoop = 30;
+
+		while (!asignado && loop < maxLoop) {
+
+			int numAleatorio = crearNumAleatorio(0, 8);
+			ColorCarta colorCarta = colores.get(numAleatorio);
+			Color color = colorCarta.getColor();
+			int colorCartaRestantes = colorCarta.getTotal();
+
+			// Assignar color si hay disponible (max 2)
+			if (colorCartaRestantes > 0) {
+
+				colorCarta.setTotal(colorCartaRestantes - 1);
+				carta.setBackground(color);
+
+				asignado = true;
 			}
+
+			loop++;
+		}
+
+	}
+
+	/**
+	 * Crear cartas y añadimos al array de cartas
+	 */
+	public void crearCartas() {
+		// Posicion casillas x
+		int x = 0;
+		// Posicion casillas y
+		int y = 0;
+		for (int i = 0; i < 16; i++) {
+			Carta carta = new Carta(this);
+			if (i > 0 && i % 4 == 0) {
+				x = 0;
+				y = y + 120 + 10;
+			}
+			carta.setBounds(120 * x + 40 + (10 * x), y + 30, 120, 120);
+			darColor(carta);
+
+			x++;
+
+			// Añadir carta al arryList
+			cartas.add(carta);
 
 		}
 	}
 	
 	/**
-	 * 
-	 * @param colorAleatori
-	 * @return
+	 * Dar la vuelta a las cartas para taparlas
 	 */
-	// Metode per revisar si el color es repeteix + de dues vegades
-	public boolean esRepetit(Color colorAleatori) { 				
-		// Inicialitza un contador
-		int contador = 0; 											
-		// Recorrem la llista de colors no repetits segons la
-		// seva mida
-		for (int i = 0; i < listaColoresNoRepetidos.size(); i++) {	
-																	
-			// Si la posicio de la llista es igual al color
-			// aleatori pasat pel constructor, es suma
-			if (listaColoresNoRepetidos.get(i) == colorAleatori) { 	
-																	
-				contador++;
-			}
-			// Si el contador es mes gran de 2 no es sumará
-			//no dona valor al boto i busquem un altre cop
-			if (contador >= 2) { 									
-				return true; 										
-			}
+	public void taparCartas() {
+		
 
+		for (int i = 0; i < cartasGiradas.size(); i++) {
+			Carta carta = cartasGiradas.get(i);
+//			carta.setGirada(false);
+//			carta.setSelected(true);
+//			cartasGiradas.em
 		}
-		return false; // okey per donar valor al boto
 
+		
 	}
 	
-	/**
-	 * Guardar lista de colores al crear class
-	 * @return
-	 */
-	private void listaColores() {
-
-		this.colores.add(Color.black);
-		this.colores.add(Color.red);
-		this.colores.add(Color.blue);
-		this.colores.add(Color.green);
-		this.colores.add(Color.magenta);
-		this.colores.add(Color.pink);
-		this.colores.add(Color.yellow);
-		this.colores.add(Color.orange);
-
+	public void comprobarGiradas() {
+		if (cartasGiradas.size() > 3) {
+			System.out.println("taparcartas");
+			taparCartas();
+		} else {
+			System.out.println("no tapar cartas");
+		}
+	}
+	
+	public void sumarCartaGirada(Carta carta) {
+		cartasGiradas.add(carta);
 	}
 
 }
