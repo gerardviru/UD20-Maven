@@ -1,9 +1,5 @@
-package Ejercicio5UD20.Ejercicio5UD20;
+package Ejercicio5UD20.com;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
