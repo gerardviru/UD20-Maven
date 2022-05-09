@@ -26,6 +26,8 @@ public class Memory extends JFrame {
 	private JToggleButton tglbtn_1, tglbtn_2, tglbtn_3, tglbtn_4, tglbtn_5, tglbtn_6, tglbtn_7, tglbtn_8, tglbtn_9,
 			tglbtn_10, tglbtn_11, tglbtn_12, tglbtn_13, tglbtn_14, tglbtn_15, tglbtn_16;
 	private int pulsats= 0;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -344,16 +346,16 @@ public class Memory extends JFrame {
 
 	}
 
-	private boolean esRepetit(Color colorAleatori) { // Metode per revisar si el color es repeteix + de dues vegades
-		int contador = 0; // Inicialitza un contador
-		for (int i = 0; i < listaColoresNoRepetidos.size(); i++) { // Recorrem la llista de colors no repetits segons la
+	private boolean esRepetit(Color colorAleatori) { 				// Metode per revisar si el color es repeteix + de dues vegades
+		int contador = 0; 											// Inicialitza un contador
+		for (int i = 0; i < listaColoresNoRepetidos.size(); i++) {	// Recorrem la llista de colors no repetits segons la
 																	// seva mida
-			if (listaColoresNoRepetidos.get(i) == colorAleatori) { // Si la posicio de la llista es igual al color
+			if (listaColoresNoRepetidos.get(i) == colorAleatori) { 	// Si la posicio de la llista es igual al color
 																	// aleatori pasat pel constructor, es suma
 				contador++;
 			}
-			if (contador >= 2) { // Si el contador es mes gran de 2 no es sumará
-				return true; // no dona valor al boto i busquem un altre cop
+			if (contador >= 2) { 									// Si el contador es mes gran de 2 no es sumará
+				return true; 										//no dona valor al boto i busquem un altre cop
 			}
 
 		}
@@ -361,18 +363,18 @@ public class Memory extends JFrame {
 
 	}
 
-	private void donarColorLLista() { // Reomplir els TuggleButtons amb el seu colors
+	private void donarColorLLista() { 								// Reomplir els TuggleButtons amb el seu colors
 
-		for (int i = 0; i < listaToggleButton.size(); i++) { // Recorrem la llista de TougleButtons
-			boolean revisador = true; // Creem un revisador amb el valor true
-										// Invoquem el metode Crear Aleatori, lhi donem la varieble 'color'
+		for (int i = 0; i < listaToggleButton.size(); i++) { 		// Recorrem la llista de TougleButtons
+			boolean revisador = true; 								// Creem un revisador amb el valor true
+																	// Invoquem el metode Crear Aleatori, lhi donem la varieble 'color'
 
-			while (revisador == true) { // Mentres el revisador sigui true, entrará al While
+			while (revisador == true) { 							// Mentres el revisador sigui true, entrará al While
 				Color color = colorAleatori();
-				if (esRepetit(color) == false) { // Si la condicio es repetit amb la variable color es false,
-					listaToggleButton.get(i).setBackground(color); // S'afegirá el valor al Touglebutton
-					listaColoresNoRepetidos.add(color); // S'actualitza el valor a la llista
-					revisador = false; // I el revisador pasará a false, per sortir de while
+				if (esRepetit(color) == false) { 					// Si la condicio es repetit amb la variable color es false,
+					listaToggleButton.get(i).setBackground(color); 	// S'afegirá el valor al Touglebutton
+					listaColoresNoRepetidos.add(color); 			// S'actualitza el valor a la llista
+					revisador = false; 								//I el revisador pasará a false, per sortir de while
 
 				}
 			}
@@ -392,9 +394,9 @@ public class Memory extends JFrame {
 	private void maximDos() {
 		int pulsado = 0;
 		for (int i = 0; i < listaToggleButton.size(); i++) {
-
 			if (listaToggleButton.get(i).isSelected() == false) {
 				pulsado++;
+				listaToggleButton.get(i).isEnabled();
 			}
 		}
 		if (pulsado ==3) {
