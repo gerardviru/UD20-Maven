@@ -26,11 +26,11 @@ public class Memory extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void crearVistaMemory(Controlador controlador) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Memory frame = new Memory();
+					Memory frame = new Memory(controlador);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,9 +42,7 @@ public class Memory extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Memory() {
-		
-		Controlador controlador = new Controlador();
+	public Memory(Controlador controlador) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 632, 611);
@@ -61,33 +59,6 @@ public class Memory extends JFrame {
 			contentPane.add(carta);
 		}
 		
-	}
-	// System.out.println(listaToggleButton.get(0).isSelected());
-
-	// Metode on lhi pasem el minim i el maxim perque ens creeí un numero aleatori
-	public int crearNumAleatorio(int min, int max) {
-		Random random = new Random();
-
-		int numero = random.nextInt(max + min) + min;
-		System.out.println(numero);
-
-		return numero;
-	}
-
-	public Color colorAleatori() {
-
-		listaColores.add(Color.black);
-		listaColores.add(Color.red);
-		listaColores.add(Color.blue);
-		listaColores.add(Color.green);
-		listaColores.add(Color.magenta);
-		listaColores.add(Color.pink);
-		listaColores.add(Color.yellow);
-		listaColores.add(Color.orange);
-		// Retorna un color aleatorio a través del numero aleatorio que hem creat
-		// anteriorment
-		return listaColores.get(crearNumAleatorio(0, 8));
-
 	}
 
 }

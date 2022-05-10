@@ -1,8 +1,11 @@
 package Ejercicio_9_UD20.ejercicio9UD20;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.Timer;
 
 public class Controlador {
 
@@ -17,6 +20,8 @@ public class Controlador {
 	private ArrayList<Carta> cartasGiradas = new ArrayList<Carta>();
 	// Los colores disponibles
 	private ArrayList<ColorCarta> colores = new ArrayList<ColorCarta>();
+	// Timer
+	private Timer timer;
 
 	/*
 	 * Constructor
@@ -24,7 +29,9 @@ public class Controlador {
 	public Controlador() {
 		crearColoresCartas();
 		crearCartas();
+		this.timer = new Timer(1000, timerActionListener());
 	}
+
 
 	// Getters Setters
 
@@ -175,34 +182,100 @@ public class Controlador {
 
 		}
 	}
-	
+
 	/**
 	 * Dar la vuelta a las cartas para taparlas
 	 */
 	public void taparCartas() {
-		
 
-		for (int i = 0; i < cartasGiradas.size(); i++) {
-			Carta carta = cartasGiradas.get(i);
-//			carta.setGirada(false);
-//			carta.setSelected(true);
-//			cartasGiradas.em
+		int cartasSize = cartasGiradas.size();
+		for (int i = 0; i < cartasSize; i++) {
+			cartasGiradas.get(i).setSelected(true);
+			cartasGiradas.get(i).setGirada(false);
+			cartasGiradas.get(i).setEnabled(true);
+		}
+		cartasGiradas.clear();
+
+	}
+
+	/**
+	 * Comprobar las cartas al clicar sobre la carta
+	 */
+	public void comprobar() {
+
+		// Si dos cartas giradas
+		if (cartasGiradas.size() >= 2) {
+			
+			// Desactivar botones
+			desactivarBotones();
+			timer.start();
+			
+//			// Las cartas giradas
+//			Carta carta0 = cartasGiradas.get(0);
+//			Carta carta1 = cartasGiradas.get(1);
+//			System.out.println("carta0" + carta0);
+//			System.out.println("carta1" + carta1);
+//
+//			// Si color de las cartas es igual, esconder cartas
+//			if (carta0.getBackground().equals(carta1.getBackground())) {
+//				carta0.setVisible(false);
+//				carta1.setVisible(false);
+//			}
+//
+//			taparCartas();
+
 		}
 
-		
 	}
-	
-	public void comprobarGiradas() {
-		if (cartasGiradas.size() > 3) {
-			System.out.println("taparcartas");
-			taparCartas();
-		} else {
-			System.out.println("no tapar cartas");
-		}
-	}
-	
-	public void sumarCartaGirada(Carta carta) {
+
+	/**
+	 * Añadir carta al array
+	 * @param carta
+	 */
+	public void anadirCartaGirada(Carta carta) {
 		cartasGiradas.add(carta);
+	}
+	
+	private void desactivarBotones() {
+		for (int i = 0; i < cartas.size(); i++) {
+			cartas.get(i).setEnabled(false);
+		}
+	}
+	private void activarBotones() {
+		for (int i = 0; i < cartas.size(); i++) {
+			cartas.get(i).setEnabled(true);
+		}
+	}
+	
+	/**
+	 * Timer action
+	 * @return
+	 */
+	private ActionListener timerActionListener() {
+		return new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				// Las cartas giradas
+				Carta carta0 = cartasGiradas.get(0);
+				Carta carta1 = cartasGiradas.get(1);
+
+	
+				// Si color de las cartas es igual, esconder cartas
+				if (carta0.getBackground().equals(carta1.getBackground())) {
+					carta0.setVisible(false);
+					carta1.setVisible(false);
+				}
+	
+				taparCartas();
+				
+				activarBotones();
+				
+				timer.stop();
+				
+			}
+		};
 	}
 
 }
