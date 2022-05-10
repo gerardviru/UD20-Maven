@@ -94,6 +94,8 @@ public class JFrame_Ejercicio5UD20 extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				AreaTexto.setText("MouseCliked");
 				
+				
+				
 			}
 		});
 	}
