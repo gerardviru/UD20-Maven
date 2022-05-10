@@ -1,4 +1,4 @@
-package Ejercicio_1_UD20.Ejercicio1UD20;
+package Ejercicio5UD20.Ejercicio5UD20;
 
 import static org.junit.Assert.assertTrue;
 
