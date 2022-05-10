@@ -210,20 +210,6 @@ public class Controlador {
 			desactivarBotones();
 			timer.start();
 			
-//			// Las cartas giradas
-//			Carta carta0 = cartasGiradas.get(0);
-//			Carta carta1 = cartasGiradas.get(1);
-//			System.out.println("carta0" + carta0);
-//			System.out.println("carta1" + carta1);
-//
-//			// Si color de las cartas es igual, esconder cartas
-//			if (carta0.getBackground().equals(carta1.getBackground())) {
-//				carta0.setVisible(false);
-//				carta1.setVisible(false);
-//			}
-//
-//			taparCartas();
-
 		}
 
 	}
