@@ -4,19 +4,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-<<<<<<< HEAD:Ejercicio4UD20/pom.xml
   <groupId>UD20</groupId>
   <artifactId>Ejercicio4UD20</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <name>Ejercicio4UD20</name>
-=======
-  <groupId>Ejercicio5UD20</groupId>
-  <artifactId>Ejercicio5UD20</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-
-  <name>Ejercicio5UD20</name>
->>>>>>> Ejercicio-5:Ejercicio5UD20/pom.xml
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
